@@ -37,6 +37,6 @@ public class PlayerMoveListener extends Listener
     			player.getConfig().save(Genesis.usersFile);
   		} catch (IOException e) {
     			e.printStackTrace();
-		
+		}
 	}
 }
