@@ -10,6 +10,8 @@ import delta.spigot.genesis.Genesis;
 
 public class User extends PlayerCharacter
 {
+	private YamlConfiguration confFile = YamlConfiguration.loadConfiguration(Genesis.usersFile);
+	
 	public User(Player player) {
 		super(player);
 	}
@@ -46,5 +48,9 @@ public class User extends PlayerCharacter
 		YamlConfiguration file = YamlConfiguration.loadConfiguration(Genesis.usersFile);
 		if (file.contains(this.getName() + ".IP")) return true;
 		else return false;
+	}
+	
+	public YamlConfiguration getConfig() {
+		return this.confFile;
 	}
 }
