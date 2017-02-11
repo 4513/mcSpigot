@@ -16,9 +16,12 @@ public class PlayerMoveListener extends Listener
 	public void onMoveEvent(PlayerMoveEvent event) {
 	
 		User player = new User(event.getPlayer());
+		
+		int countJumps = 0;
+		
 		if(player.getLocation().getSubtract(0,1,0).getBlock().getType() != Material.AIR) {
 		
-			
+			countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
 		
 		}
 	}
