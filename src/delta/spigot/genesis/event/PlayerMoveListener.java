@@ -12,7 +12,7 @@ public class PlayerMoveListener extends Listener
 		super(plugin);
 	}
 	
-	@EventHandler (priority = EventPriority.NORMAL)
+	@EventHandler (priority = EventPriority.HIGH)
 	public void onMoveEvent(PlayerMoveEvent event) {
 		
 	}
