@@ -21,11 +21,9 @@ public class PlayerMoveListener extends Listener
 		
 		User player = new User(event.getPlayer());
 		
-		final double STILL = -0.0784000015258789;
 		int countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
 		
 		if(event.getFrom().getY()<event.getTo().getY()){
-		
 			countJumps = countJumps+1;
 		}
 		
