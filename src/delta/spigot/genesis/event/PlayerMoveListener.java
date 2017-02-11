@@ -27,7 +27,7 @@ public class PlayerMoveListener extends Listener
 		int countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
 		
 		if(player.getVelocity().getY() > STILL) {
-			countJumps++;
+			countJumps = countJumps+1;
 		}
 		
 		player.getConfig().set(player.getName() + ".Jumps", countJumps);
@@ -37,5 +37,8 @@ public class PlayerMoveListener extends Listener
   		} catch (IOException e) {
     			e.printStackTrace();
 		}
+		
+		Thread.sleep(2000);
+		
 	}
 }
