@@ -27,7 +27,6 @@ import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.block.Block;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.conversations.Conversation;
 import org.bukkit.conversations.ConversationAbandonedEvent;
 import org.bukkit.entity.Entity;
@@ -56,25 +55,24 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.Vector;
 
-import delta.spigot.genesis.Genesis;
 import delta.spigot.genesis.log.I18n;
 
 public class PlayerCharacter implements Player
 {
 	private float walkSpeed;
-	private double runSpeed;
+	//private double runSpeed;
 	private float flySpeed;
-	private double crouchSpeed;
-	private double jumpPower;
-	private String firstName;
-	private String lastName;
+	//private double crouchSpeed;
+	//private double jumpPower;
+	//private String firstName;
+	//private String lastName;
 	private String nickName;
 	private String displayName = nickName;
 	private Player player;
-	private double health = 20.0;
-	private double hunger = 20.0;
-	private List<PlayerCharacter> bodyguards;
-	private Location location;
+	//private double health = 20.0;
+	//private double hunger = 20.0;
+	//private List<PlayerCharacter> bodyguards;
+	//private Location location;
 	
 	private Inventory enderChest;
 	private PlayerInventory inventory;

@@ -29,11 +29,11 @@ public class User extends PlayerCharacter
 			file.set(this.getName() + ".LastPlayedIP", this.getIPAddress());
 			file.set(this.getName() + ".GameMode", false);
 			file.set(this.getName() + ".FlyAllow", false);
-			file.set(this.getName() + ".Speed.Run", 10.0);
-			file.set(this.getName() + ".Speed.Walk", 5.0);
-			file.set(this.getName() + ".Speed.Fly", 7.5);
-			file.set(this.getName() + ".Speed.Crouch", 2.5);
+			file.set(this.getName() + ".Speed.Run", 3.5);
+			file.set(this.getName() + ".Speed.Walk", 2.0);
+			file.set(this.getName() + ".Speed.Sneak", 1.0);
 			file.set(this.getName() + ".JumpPower", 1);
+			file.set(this.getName() + ".Energy", "");
 			try {
 				file.save(Genesis.usersFile);
 			} catch (IOException e) {
