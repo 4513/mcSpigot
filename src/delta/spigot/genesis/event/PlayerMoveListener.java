@@ -31,8 +31,8 @@ public class PlayerMoveListener extends Listener
 		
 		player.getConfig().set(player.getName() + ".JumpsTMP", countJumps);
 		
-		if(player.getConfig().getInt(player.getName() + ".JumpsTMP")%6 == 0) {
-			player.getConfig().set(player.getName() + ".JumpsTMP", 0);
+		if(player.getConfig().getInt(player.getName() + ".JumpsTMP")%7 == 0) {
+			player.getConfig().set(player.getName() + ".JumpsTMP", 1);
 			player.getConfig().set(player.getName() + ".Jumps", player.getConfig().getInt(player.getName() + ".Jumps")+1);
 		}
 		
