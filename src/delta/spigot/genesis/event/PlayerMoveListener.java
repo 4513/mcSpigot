@@ -1,9 +1,7 @@
-
 package delta.spigot.genesis.event;
 
 import java.io.IOException;
 
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -38,7 +36,11 @@ public class PlayerMoveListener extends Listener
     			e.printStackTrace();
 		}
 		
-		Thread.sleep(2000);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
