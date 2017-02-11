@@ -27,7 +27,9 @@ public class Genesis extends JavaPlugin implements GenesisPlugin
 	public final PluginDescriptionFile pdFile = this.getDescription();
 	public GenesisPlugin plugin = this;
 	public static final File pluginFolder = new File("plugins" + File.separator + "Genesis");
+	public static final File opFile = new File("plugins" + File.separator + "Genesis" + File.separator + "ops.yml");
 	public static final File usersFile = new File("plugins" + File.separator + "Genesis" + File.separator + "users.yml");
+	public static final File permissionsFile = new File("plugins" + File.separator + "Genesis" + File.separator + "permissions.yml");
 	public static List<PlayerCharacter> listOfPlayerCharacter;
 
 	@Override
@@ -81,14 +83,23 @@ public class Genesis extends JavaPlugin implements GenesisPlugin
 	@Override
 	public void registerFiles()
 	{
-		tl("usersFile");
-		if (!usersFile.exists()) {
-			tl("usersFileNotExists");
-			try {
+		tl("creatingFiles");
+		try {
+			if (!usersFile.exists()) {
+				tl("fileNotExists", "usersFile");
 				usersFile.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
+			if (!permissionsFile.exists()) {
+				tl("fileNotExists", "permissionsFile");
+				permissionsFile.createNewFile();
+			}
+			if (!opFile.exists()) {
+				tl("fileNotExists", "opFile");
+				opFile.createNewFile();
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
