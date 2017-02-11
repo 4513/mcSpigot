@@ -5,6 +5,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import delta.spigot.genesis.GenesisPlugin;
+import delta.spigot.genesis.Genesis;
 
 public class PlayerMoveListener extends Listener
 {
@@ -22,7 +23,14 @@ public class PlayerMoveListener extends Listener
 		if(player.getLocation().getSubtract(0,1,0).getBlock().getType() != Material.AIR) {
 		
 			countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
-		
+			player.getConfig().set(player.getName() + ".Jumps", countJumps+1);
+			
+			try {
+				player.getConfig().save(Genesis.usersFile);
+	   		} catch (IOException e) {
+				e.printStackTrace();
+	   		}
+	   		 
 		}
 	}
 }
