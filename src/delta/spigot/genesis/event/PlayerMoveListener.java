@@ -24,14 +24,13 @@ public class PlayerMoveListener extends Listener
 		User player = new User(event.getPlayer());
 		
 		final double STILL = -0.0784000015258789;
-		int countJumps = 0;
-		
-		Player player = event.getPlayer();
-  		boolean isJumping = player.getVelocity().getY() > STILL;
+		int countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
 		
 		if(player.getVelocity().getY() > STILL) {
 			countJumps++;
 		}
+		
+		player.getConfig().set(player.getName() + ".Jumps", countJumps);
 		
 		try {
     			player.getConfig().save(Genesis.usersFile);
