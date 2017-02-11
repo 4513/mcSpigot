@@ -24,7 +24,8 @@ public class PlayerMoveListener extends Listener
 		final double STILL = -0.0784000015258789;
 		int countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
 		
-		if(player.getVelocity().getY() > STILL) {
+		if(event.getFrom().getY()<event.getTo().getY()){
+		
 			countJumps = countJumps+1;
 		}
 		
@@ -34,12 +35,6 @@ public class PlayerMoveListener extends Listener
     			player.getConfig().save(Genesis.usersFile);
   		} catch (IOException e) {
     			e.printStackTrace();
-		}
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 		
 	}
