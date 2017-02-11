@@ -1,3 +1,4 @@
+
 package delta.spigot.genesis.event;
 
 import java.io.IOException;
@@ -19,22 +20,23 @@ public class PlayerMoveListener extends Listener
 	
 	@EventHandler (priority = EventPriority.HIGH)
 	public void onMoveEvent(PlayerMoveEvent event) {
-	
+		
 		User player = new User(event.getPlayer());
 		
+		final double STILL = -0.0784000015258789;
 		int countJumps = 0;
 		
-		if(player.getLocation().subtract(0,1,0).getBlock().getType() != Material.AIR) {
+		Player player = event.getPlayer();
+  		boolean isJumping = player.getVelocity().getY() > STILL;
 		
-			countJumps = player.getConfig().getInt(player.getName() + ".Jumps");
-			player.getConfig().set(player.getName() + ".Jumps", countJumps+1);
-			
-			try {
-				player.getConfig().save(Genesis.usersFile);
-	   		} catch (IOException e) {
-				e.printStackTrace();
-	   		}
-	   		 
+		if(player.getVelocity().getY() > STILL) {
+			countJumps++;
 		}
+		
+		try {
+    			player.getConfig().save(Genesis.usersFile);
+  		} catch (IOException e) {
+    			e.printStackTrace();
+		
 	}
 }
