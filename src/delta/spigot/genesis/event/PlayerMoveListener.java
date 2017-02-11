@@ -14,6 +14,7 @@ public class PlayerMoveListener extends Listener
 	
 	@EventHandler (priority = EventPriority.HIGH)
 	public void onMoveEvent(PlayerMoveEvent event) {
+		User player = new User(event.getPlayer());
 		
 	}
 }
