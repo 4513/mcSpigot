@@ -14,7 +14,12 @@ public class PlayerMoveListener extends Listener
 	
 	@EventHandler (priority = EventPriority.HIGH)
 	public void onMoveEvent(PlayerMoveEvent event) {
+	
 		User player = new User(event.getPlayer());
+		if(player.getLocation().getSubtract(0,1,0).getBlock().getType() != Material.AIR) {
 		
+			
+		
+		}
 	}
 }
