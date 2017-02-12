@@ -12,7 +12,7 @@ public interface GenesisPlugin
 	void reload();
 	
 	boolean onCommand(CommandSender commandSender, Command command, String commandLabel, String[] args);
-	boolean onGenesisCommand(CommandSource source, Command command, String label, String[] args, String prefix, String pathToCmd);
+	boolean onGenesisCommand(CommandSource source, Command command, String label, String[] args, String prefix, String commandPath, ClassLoader classLoader);
 	
 	void registerListeners();
 	void registerFiles();

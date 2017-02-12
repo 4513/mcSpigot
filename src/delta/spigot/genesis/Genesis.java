@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -59,15 +58,22 @@ public class Genesis extends JavaPlugin implements GenesisPlugin
 
 	@Override
 	public boolean onCommand(CommandSender commandSender, Command command, String commandLabel, String[] args) {
-		return onGenesisCommand(new CommandSource(commandSender), command, commandLabel, args, "genesis.", "delta.spigot.genesis.command");
+		return onGenesisCommand(new CommandSource(commandSender), command, commandLabel, args, "genesis.", "delta.spigot.genesis.command.", this.getClass().getClassLoader());
 	}
 
 	@Override
 	public boolean onGenesisCommand(CommandSource source, Command command, String label, String[] args, String prefix,
-			String pathToCmd)
+			String commandPath, ClassLoader classLoader)
 	{
-		if (source.getSource() instanceof Player) {
+		delta.spigot.genesis.command.Command cmd;
+		
+		try {
+			cmd = (delta.spigot.genesis.command.Command) classLoader.loadClass(commandPath + command.getName().substring(0, 1).toUpperCase() + command.getName().substring(1).toLowerCase() + "Command").newInstance();
+			cmd.run(source, command, label, args, prefix);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		return true;
 	}
 
