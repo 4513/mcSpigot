@@ -10,7 +10,7 @@ public class Command
 	private String[] args;
 	private String prefix;
 	
-	public Command(CommandSource commandSource, org.bukkit.command.Command cmd, String label, String[] args, String prefix) {
+	public void run(CommandSource commandSource, org.bukkit.command.Command cmd, String label, String[] args, String prefix) {
 		this.commandSource = commandSource;
 		this.command = cmd;
 		this.commandLabel = label;
@@ -18,11 +18,11 @@ public class Command
 		this.prefix = prefix;
 	}
 	
-	public void run() {
+	public void run(User user) {
 		
 	}
 	
-	public void run(User user) {
+	public void run() {
 		
 	}
 	
