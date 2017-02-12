@@ -12,8 +12,6 @@ import delta.spigot.genesis.Genesis;
 
 public class PlayerMoveListener extends Listener
 {
-
-	
 	public PlayerMoveListener(GenesisPlugin plugin) {
 		super(plugin);
 	}
@@ -22,6 +20,10 @@ public class PlayerMoveListener extends Listener
 	public void onMoveEvent(PlayerMoveEvent event) {
 		
 		User player = new User(event.getPlayer());
+		
+		if (player.isSprinting()) {
+			player.getConfig().set(player.getName() + ".SpeedTime", player.getConfig().getInt(player.getName() + ".SpeedTime") + 1);
+		}
 		
 		int countJumps = player.getConfig().getInt(player.getName() + ".JumpsTMP");
 		
