@@ -63,7 +63,7 @@ public class PlayerCharacter implements Player
 	//private double runSpeed;
 	private float flySpeed;
 	//private double crouchSpeed;
-	//private double jumpPower;
+	protected double jumpPower;
 	//private String firstName;
 	//private String lastName;
 	private String nickName;
@@ -87,6 +87,10 @@ public class PlayerCharacter implements Player
 	public boolean isUser() {
 		if (this instanceof User) return true;
 		else return false;
+	}
+	
+	public double getJumpPower() {
+		return this.jumpPower;
 	}
 
 	@Override
@@ -766,21 +770,25 @@ public class PlayerCharacter implements Player
 	}
 
 	@Override
+	@Deprecated
 	public boolean hasPermission(String permission) {
 		return player.hasPermission(permission);
 	}
 
 	@Override
+	@Deprecated
 	public boolean hasPermission(Permission permission) {
 		return player.hasPermission(permission);
 	}
 
 	@Override
+	@Deprecated
 	public boolean isPermissionSet(String permission) {
 		return player.isPermissionSet(permission);
 	}
 
 	@Override
+	@Deprecated
 	public boolean isPermissionSet(Permission permission) {
 		return player.isPermissionSet(permission);
 	}

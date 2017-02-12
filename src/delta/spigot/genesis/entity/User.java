@@ -7,8 +7,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import delta.spigot.genesis.Genesis;
+import delta.spigot.genesis.command.ICommandSource;
 
-public class User extends PlayerCharacter
+public class User extends PlayerCharacter implements ICommandSource
 {
 	private YamlConfiguration confFile = YamlConfiguration.loadConfiguration(Genesis.usersFile);
 	
@@ -35,6 +36,9 @@ public class User extends PlayerCharacter
 			file.set(this.getName() + ".Speed.Walk", 2.0);
 			file.set(this.getName() + ".Speed.Sneak", 1.0);
 			file.set(this.getName() + ".JumpPower", 1);
+			file.set(this.getName() + ".SpeedTime", 0);
+			file.set(this.getName() + ".Jumps", 0);
+			file.set(this.getName() + ".JumpsTMP", 1);
 			file.set(this.getName() + ".Energy", "");
 			try {
 				file.save(Genesis.usersFile);
@@ -42,6 +46,8 @@ public class User extends PlayerCharacter
 				e.printStackTrace();
 			}
 		}
+		
+		this.setWalkSpeed((float) 0.6);
 	}
 	
 	public boolean isRegistered() {
@@ -52,5 +58,10 @@ public class User extends PlayerCharacter
 	
 	public YamlConfiguration getConfig() {
 		return this.confFile;
+	}
+	
+	public boolean isAuthorized(String permission) {
+		
+		return false;
 	}
 }
