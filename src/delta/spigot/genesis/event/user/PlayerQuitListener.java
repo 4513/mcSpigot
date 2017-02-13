@@ -2,19 +2,19 @@ package delta.spigot.genesis.event.user;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import delta.spigot.genesis.GenesisPlugin;
 import delta.spigot.genesis.event.Listener;
 
-public class PlayerKickListener extends Listener
+public class PlayerQuitListener extends Listener
 {
-	public PlayerKickListener(GenesisPlugin plugin) {
+	public PlayerQuitListener(GenesisPlugin plugin) {
 		super(plugin);
 	}
-	
+
 	@EventHandler (priority = EventPriority.HIGH)
-	public void onPlayerKick(PlayerKickEvent event) {
+	public void onQuitEvent(PlayerQuitEvent event) {
 		
 	}
 }
