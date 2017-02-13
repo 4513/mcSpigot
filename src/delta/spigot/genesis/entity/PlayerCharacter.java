@@ -138,6 +138,10 @@ public class PlayerCharacter implements Player
 	public String getName() {
 		return nickName;
 	}
+	
+	public String getName(boolean lowerCase) {
+		return lowerCase ? nickName.toLowerCase() : nickName.toUpperCase();
+	}
 
 	@Override
 	public InventoryView getOpenInventory() {
