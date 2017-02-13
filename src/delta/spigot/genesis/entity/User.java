@@ -95,7 +95,7 @@ public class User extends PlayerCharacter implements ICommandSource
 		
 	}
 	
-	public void ban(User admin, String reason/*, Time time*/) {
+	public void ban(User admin, String reason, int time) {
 		
 	}
 }
