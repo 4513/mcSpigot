@@ -50,7 +50,7 @@ public class User extends PlayerCharacter implements ICommandSource
 		}
 		
 		this.setWalkSpeed((float) 0.0);
-		
+y		
 		if (isAuthorized("janeviemus")) {
 			Logger.getLogger("Minecraft").info("isAuthorized();");
 		}
@@ -95,7 +95,7 @@ public class User extends PlayerCharacter implements ICommandSource
 		
 	}
 	
-	public void ban(User admin, String reason, int time) {
+	public void ban(User admin, String reason, int time /*minutes*/ ) {
 		
 	}
 }
