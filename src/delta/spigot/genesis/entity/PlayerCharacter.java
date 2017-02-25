@@ -1061,7 +1061,6 @@ public class PlayerCharacter implements Player
 	}
 
 	@Override
-	@Deprecated //Zmen zo suboru
 	public boolean getAllowFlight() {
 		return player.getAllowFlight();
 	}
@@ -1534,7 +1533,6 @@ public class PlayerCharacter implements Player
 	public void setWalkSpeed(float value) throws IllegalArgumentException {
 		walkSpeed = value;
 		player.setWalkSpeed(value);
-		Logger.getLogger("Minecraft").info("Player.setWalkSpeed(float value): void");
 	}
 
 	@Override
