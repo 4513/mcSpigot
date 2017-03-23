@@ -22,7 +22,7 @@ import net.citizensnpcs.api.npc.NPCRegistry;
 import net.citizensnpcs.api.trait.Trait;
 import net.citizensnpcs.api.util.DataKey;
 
-public class NPC extends PlayerCharacter {
+public final class NPC extends PlayerCharacter {
 	private final EntityType entityType;
 	private final net.citizensnpcs.api.npc.NPC npc;
 	private Location location;
