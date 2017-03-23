@@ -1,4 +1,5 @@
 #wtf poznamka jeden
 #toto zmenj
-wat: sss
-dva: tro
+defaultPermissions:
+  - genesis.modifyworld.placeblock
+  - genesis.modifyworld.breakblock

@@ -1,0 +1,17 @@
+#op:
+#  lvl1:
+#    permissions:
+#      - genesis.plugin
+#  lvl2:
+#    permissions:
+#      - asd
+#  lvl3:
+#    permissions:
+#      - dsa
+#  lvl4:
+#    permissions:
+#      - asdasd
+#      - sda
+
+users:
+  SIR: 'lvl1'

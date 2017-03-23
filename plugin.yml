@@ -1,5 +1,36 @@
-main: delta.spigot.genesis.Genesis
 name: Genesis
-version: 0.0.5
-description: Plugin of All
-author: Delta
+version: 0.1.3
+description: This Plugin Provided Mainly Interface Of Server
+load: STARTUP
+author: DeltaCraft
+authors: ["adyhnat, 9I214, 6I012"]
+website: http://facebook.com/
+main: delta.spigot.genesis.Genesis
+database: true
+#depend: [none]
+prefix: Genesis
+softdepend: [ProtocolLib]
+#loadbefore: [none]
+
+commands:
+  chat:
+    description: "Chat Command"
+    aliases: [ch]
+    permissions: genesis.chat
+    permission-message: "Permission Message"
+    usage: "/chat"
+  delta:
+    description: "Genesis Command"
+    #aliases: [d]
+    #permissions: genesis.delta
+    #permission-message: "Permission Message"
+    usage: "/delta"
+  help:
+    usage: "/help <page|plugin|command>"
+    description: Shows The Help Menu
+  player:
+    usage: "/player"
+    description: aliases
+  server:
+    usage: "/server"
+    description: server
