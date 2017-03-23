@@ -51,6 +51,14 @@ public final class NPC extends PlayerCharacter {
 		register();
 	}
 	
+	public NPC(UUID uuid, String name) {
+		entityType = EntityType.PLAYER;
+		npc = getRegister().createNPC(entityType, uuid, 0, name);
+		this.nickName = name;
+		this.player = Bukkit.getPlayer(name);
+		register();
+	}
+	
 	public NPC(String name) {
 		entityType = EntityType.PLAYER;
 		npc = getRegister().createNPC(entityType, name);
