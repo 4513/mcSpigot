@@ -1,5 +1,57 @@
-#wtf poznamka jeden
-#toto zmenj
-defaultPermissions:
-  - genesis.modifyworld.placeblock
+# This Is Default Configuration Yaml File Of Genesis Plugin
+# (c) Genesis Plugin, Delta-Craft 2017
+
+#############################################################
+# O-------------------------------------------------------O #
+# |                  Developer Settings                   | #
+# O-------------------------------------------------------O #
+#############################################################
+
+# Set Debug Mode To 'True' Only If Plugin Is Testing
+# Debug Mode Shows All Notifications
+DebugMode: false
+
+
+#############################################################
+# O-------------------------------------------------------O #
+# |                 Global Configuration                  | #
+# O-------------------------------------------------------O #
+#############################################################
+
+# Set Default Permissions Every Player Get On First Join
+DefaultPermissions:
   - genesis.modifyworld.breakblock
+  - genesis.modifyworld.placeblock
+  - genesis.chat.vote
+
+
+#############################################################
+# O-------------------------------------------------------O #
+# |                  Chat Configuration                   | #
+# O-------------------------------------------------------O #
+#############################################################
+
+# Edit Chat Look
+ChatMessage: "%prefix% %player%: %message%"
+# Colors Of Player Name And Text
+ChatColor:
+  Name: "&f"
+  Text: "&8"
+
+
+#############################################################
+# O-------------------------------------------------------O #
+# |           Share Server Configuration [SSC]            | #
+# O-------------------------------------------------------O #
+#############################################################
+
+# Set ShareServerMode to true, if you have a server hierarchy
+ShareServerMode: false
+
+# If ShareServerMode is true, set main server IP address
+SSC_mainIP: "0.0.0.0"
+
+# If this is yours main server, set inheritance servers IPs
+SSC_inheritance:
+- "0.0.0.1"
+- "0.0.0.2"
