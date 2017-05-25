@@ -16,6 +16,7 @@ import delta.spigot.genesis.Genesis;
 import delta.spigot.genesis.GenesisPlugin;
 import delta.spigot.genesis.entity.User;
 import delta.spigot.genesis.event.Listener;
+import delta.spigot.genesis.structure.Tree;
 
 public class BlockPlaceListener extends Listener
 {
@@ -32,7 +33,7 @@ public class BlockPlaceListener extends Listener
 		
 		// check if player has permission first
 		if (!player.isAuthorized("genesis.modifyworld.placeBlock")) {
-			event.setCancelled(true);
+			//event.setCancelled(true);
 		} else {
 			int x = event.getBlock().getX();
 			int y = event.getBlock().getY();
@@ -50,6 +51,10 @@ public class BlockPlaceListener extends Listener
 	    	} catch (IOException e) {
 	       		e.printStackTrace();
 	  		}
+			
+			// register Tree
+			if (event.getBlock().getType().equals(Material.SAPLING))
+				new Tree(event.getBlock().getLocation(), ((org.bukkit.material.Tree) event.getBlock().getState().getData()).getSpecies());
 		}
 	}
 }

@@ -13,13 +13,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import delta.spigot.genesis.Genesis;
-import delta.spigot.genesis.GenesisPlugin;
 import delta.spigot.genesis.entity.User;
 import delta.spigot.genesis.event.Listener;
 
 public class BlockBreakListener extends Listener
 {
-	public BlockBreakListener(GenesisPlugin plugin) {
+	public BlockBreakListener(Genesis plugin) {
 		super(plugin);
 	}
 
@@ -32,7 +31,7 @@ public class BlockBreakListener extends Listener
 
 		// check if player has permission first
 		if (!player.isAuthorized("genesis.modifyworld.breakBlock")) {
-			event.setCancelled(true);
+			//event.setCancelled(true);
 		} else {
 			int x = event.getBlock().getX();
 			int y = event.getBlock().getY();
