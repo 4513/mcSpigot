@@ -1,5 +1,7 @@
 package delta.spigot.genesis;
 
+import java.io.IOException;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -15,5 +17,5 @@ public interface GenesisPlugin
 	boolean onGenesisCommand(CommandSource source, Command command, String label, String[] args, String prefix, String commandPath, ClassLoader classLoader);
 	
 	void registerListeners();
-	void registerFiles();
+	void registerFiles() throws IOException;
 }
