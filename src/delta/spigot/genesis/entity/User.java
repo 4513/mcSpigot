@@ -17,13 +17,31 @@ public class User extends PlayerCharacter implements ICommandSource
 	public File userFile = new File("plugins" + File.separator + "Genesis" + File.separator + "users" + File.separator + this.getName(true) + ".yml");
 	private YamlConfiguration confFile = YamlConfiguration.loadConfiguration(userFile);
 	public static List<User> users;
+	private boolean enabledChat = true;
+	private List<PlayerCharacter> chatWith = new ArrayList<PlayerCharacter>();
 	
 	public User(Player player) {
-		super(player);
-		//users.add(this);
+		super.player = player;
+		super.nickName = player.getName();
 	}
 
 	public static List<User> listOfUsers;
+	
+	public void enableChat(boolean value) {
+		this.enabledChat = value;
+	}
+	
+	public boolean isEnabledChat() {
+		return enabledChat;
+	}
+	
+	public List<PlayerCharacter> getChatWith() {
+		return this.chatWith;
+	}
+	
+	public void setChatWith(List<PlayerCharacter> list) {
+		this.chatWith = list;
+	}
 	
 	public void sendMessage(String message) {
 		delta.spigot.genesis.log.I18n.sendMessage(this, message);
@@ -32,7 +50,7 @@ public class User extends PlayerCharacter implements ICommandSource
 	public void register() throws IOException {
 		if (isRegistered()) {
 			getConfig().set("Location.LastIP", getIPAddress());
-			getConfig().set(this.getName(true) + ".Speed.Walk", ((Math.sqrt(getConfig().getDouble(this.getName(true) + ".SpeedTime"))/45000) + Genesis.configFile.getDouble("UC.Move.Speed.Walk")) <= 0.99 ? ((Math.sqrt(getConfig().getDouble(this.getName(true) + ".SpeedTime"))/45000) + Genesis.configFile.getDouble("UC.Move.Speed.Walk")) : 0.99);
+			getConfig().set("Move.Speed.Walk", ((Math.sqrt(getConfig().getDouble("Move.SpeedTime"))/45000) + Genesis.configFile.getDouble("UC.Move.Speed.Walk")) <= 0.99 ? ((Math.sqrt(getConfig().getDouble("Move.SpeedTime"))/45000) + Genesis.configFile.getDouble("UC.Move.Speed.Walk")) : 0.99);
 			if (getConfig().getBoolean("Move.Speed.Allow"))
 				setWalkSpeed((float) getConfig().getDouble("Move.Speed.Walk"));
 		} else {
@@ -49,10 +67,12 @@ public class User extends PlayerCharacter implements ICommandSource
 			getConfig().set("Move.Jumps", 0);
 			getConfig().set("Move.JumpsTMP", 1);
 			getConfig().set("Move.Energy", 0);
-			getConfig().set("Permissions", Genesis.configFile.get("DefaultPermissions"));
+			getConfig().set("Permissions", Genesis.configFile.getList("defaultPermissions"));
 		}
 		
 		getConfig().save(userFile);
+		
+		this.player.setMaxHealth(20.0);
 	}
 	
 	public boolean isRegistered() {
@@ -119,19 +139,20 @@ public class User extends PlayerCharacter implements ICommandSource
 			if (getGroupPermissions(groupsOfPlayer.get(i)).contains(permission)) 
 				return true;
 		
+		String tmp = permission;
 		permission = permission.replaceAll(".\\*", "");
 		if (permission.replaceAll(".", "").length() +1 <= permission.length())
 			for (int i = permission.length()-1; i >= 0; i--)
 				if (permission.charAt(i) == '.')
 					return isAuthorized(permission.substring(0, i+1) + "*");
 		
-		return false;
+		return (this.getPlayer().hasPermission(tmp) && !this.getPlayer().isOp());
 	}
 	
 	private ArrayList<String> getGroupPermissions(String group) {
 		YamlConfiguration file = YamlConfiguration.loadConfiguration(Genesis.permissionsFile);
-		List<String> perms = new ArrayList<String>(file.getStringList("Groups." + group + ".Permissions"));
-		List<String> inher = new ArrayList<String>(file.getStringList("Groups." + group + ".Inheritance"));
+		List<String> perms = new ArrayList<String>(file.getStringList("groups." + group + ".permissions"));
+		List<String> inher = new ArrayList<String>(file.getStringList("groups." + group + ".inheritance"));
 		for (int i = 0; i < inher.size(); i++) {
 			List<String> tmp = new ArrayList<String>(getGroupPermissions(inher.get(i).toString()));
 			perms.addAll(tmp);

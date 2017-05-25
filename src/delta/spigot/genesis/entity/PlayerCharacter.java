@@ -20,7 +20,6 @@ import org.bukkit.Note;
 import org.bukkit.Particle;
 import org.bukkit.Server;
 import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
 import org.bukkit.Statistic;
 import org.bukkit.WeatherType;
 import org.bukkit.World;
@@ -42,7 +41,6 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.InventoryView.Property;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MainHand;
-import org.bukkit.inventory.Merchant;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.map.MapView;
 import org.bukkit.metadata.MetadataValue;
@@ -66,9 +64,9 @@ public class PlayerCharacter implements Player
 	protected double jumpPower;
 	//private String firstName;
 	//private String lastName;
-	private String nickName;
+	protected transient String nickName = "";
 	private String displayName = nickName;
-	private Player player;
+	protected transient Player player;
 	//private double health = 20.0;
 	//private double hunger = 20.0;
 	//private List<PlayerCharacter> bodyguards;
@@ -76,13 +74,6 @@ public class PlayerCharacter implements Player
 	
 	private Inventory enderChest;
 	private PlayerInventory inventory;
-	
-	public PlayerCharacter(Player player) {
-		this.player = player;
-		/*if (!Genesis.listOfPlayerCharacter.contains(player))
-			Genesis.listOfPlayerCharacter.add(this);*/
-		this.nickName = player.getName();
-	}
 	
 	public boolean isUser() {
 		if (this instanceof User) return true;
@@ -188,10 +179,10 @@ public class PlayerCharacter implements Player
 		return player.openMerchant(villager, value);
 	}
 
-	@Override
+	/*@Override
 	public InventoryView openMerchant(Merchant merchant, boolean value) {
 		return player.openMerchant(merchant, value);
-	}
+	}*/
 
 	@Override
 	public InventoryView openWorkbench(Location location, boolean value) {
@@ -449,10 +440,10 @@ public class PlayerCharacter implements Player
 		return player.getAttribute(attribute);
 	}
 
-	@Override
+	/*@Override
 	public boolean addPassenger(Entity entity) {
 		return player.addPassenger(entity);
-	}
+	}*/
 
 	@Override
 	public boolean addScoreboardTag(String string) {
@@ -510,10 +501,10 @@ public class PlayerCharacter implements Player
 		return player.getPassenger();
 	}
 
-	@Override
+	/*@Override
 	public List<Entity> getPassengers() {
 		return player.getPassengers();
-	}
+	}*/
 
 	@Override
 	public int getPortalCooldown() {
@@ -596,6 +587,7 @@ public class PlayerCharacter implements Player
 		return player.isInvulnerable();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOnGround() {
 		return player.isOnGround();
@@ -626,10 +618,10 @@ public class PlayerCharacter implements Player
 		player.remove();
 	}
 
-	@Override
+	/*@Override
 	public boolean removePassenger(Entity entity) {
 		return player.removePassenger(entity);
-	}
+	}*/
 
 	@Override
 	public boolean removeScoreboardTag(String string) {
@@ -1302,15 +1294,15 @@ public class PlayerCharacter implements Player
 		player.playSound(location, string, value1, value2);
 	}
 
-	@Override
+	/*@Override
 	public void playSound(Location location, Sound sound, SoundCategory soundCategory, float value1, float value2) {
 		player.playSound(location, sound, soundCategory, value1, value2);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void playSound(Location location, String string, SoundCategory soundCategory, float value1, float value2) {
 		player.playSound(location, string, soundCategory, value1, value2);
-	}
+	}*/
 
 	@Override
 	public void removeAchievement(Achievement achievement) {
@@ -1327,6 +1319,7 @@ public class PlayerCharacter implements Player
 		player.resetPlayerWeather();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void resetTitle() {
 		player.resetTitle();
@@ -1378,10 +1371,10 @@ public class PlayerCharacter implements Player
 		player.sendTitle(string1, string2);
 	}
 
-	@Override
+	/*@Override
 	public void sendTitle(String string1, String string2, int value1, int value2, int value3) {
 		player.sendTitle(string1, string2, value1, value2, value3);
-	}
+	}*/
 
 	@Override
 	public void setAllowFlight(boolean value) {
@@ -1626,15 +1619,15 @@ public class PlayerCharacter implements Player
 		player.stopSound(string);
 	}
 
-	@Override
+	/*@Override
 	public void stopSound(Sound sound, SoundCategory soundCategory) {
 		player.stopSound(sound, soundCategory);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void stopSound(String string, SoundCategory soundCategory) {
 		player.stopSound(string, soundCategory);
-	}
+	}*/
 
 	@Override
 	public void updateInventory() {
